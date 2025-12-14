@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Simulacro de Acceso</title>
+</head>
+<body>
+  <h2>Registro</h2>
+  <input id="regUser" placeholder="Usuario">
+  <input id="regPass" placeholder="Contraseña" type="password">
+  <button onclick="registrar()">Registrarse</button>
+
+  <h2>Login</h2>
+  <input id="logUser" placeholder="Usuario">
+  <input id="logPass" placeholder="Contraseña" type="password">
+  <button onclick="login()">Iniciar Sesión</button>
+
+  <script>
+    function registrar() {
+      fetch('/register', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          user: regUser.value,
+          pass: regPass.value
+        })
+      });
+    }
+
+    function login() {
+      fetch('/login', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          user: logUser.value,
+          pass: logPass.value
+        })
+      });
+    }
+  </script>
+</body>
+</html>
